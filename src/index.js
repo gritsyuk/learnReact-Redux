@@ -5,16 +5,12 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import store from "./components/redux/db";
 
-// addPost('etetyyey');
 export let refreshTree = function () {
   ReactDOM.render(
     <React.StrictMode>
       <App
-        posts={store.db.posts}
-        addPost={store.addPost.bind(store)}
-        arrData={store.db.dialogsData}
-        arrMsg={store.db.msgData}
-        textareaValue={store.db.textareaValue}
+        state={store.getState()}
+        dispatch={store.dispatch.bind(store)}
       />
     </React.StrictMode>,
     document.getElementById("root")

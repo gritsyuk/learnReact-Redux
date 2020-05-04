@@ -1,6 +1,6 @@
-import React from 'react';
-import s from './Dialogs.module.css';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import s from "./Dialogs.module.css";
+import { NavLink } from "react-router-dom";
 
 const DialogItems = (props) => {
   let path = "/dialogs/" + props.id;
@@ -12,26 +12,25 @@ const DialogItems = (props) => {
 };
 
 const Message = (props) => {
-  return (
-    <div className={s.message}>{props.message}</div>
-  )
-}
+  return <div className={s.message}>{props.message}</div>;
+};
 
 const Dialogs = (props) => {
-
-let arrDialogsData = props.arrData.map( el => <DialogItems name={el.name} id={el.id} />);
-let arrMsgData = props.arrMsg.map(msg => <Message message={msg.message} />);
+  let arrDialogsData = props.dialogs.dialogsData.map((el) => (
+    <DialogItems name={el.name} id={el.id} />
+  ));
+  let arrMsgData = props.dialogs.msgData.map((msg) => (
+    <Message message={msg.message} />
+  ));
 
   return (
     <section className={s.dialogs}>
       <div className={s.dialogsItems}>
         {arrDialogsData}
-          {/* <DialogItems name={dialogsData[0].name} id={dialogsData[0].id} /> */}
-        </div>
-      <div className={s.messages}>
-        {arrMsgData}
+        {/* <DialogItems name={dialogsData[0].name} id={dialogsData[0].id} /> */}
       </div>
+      <div className={s.messages}>{arrMsgData}</div>
     </section>
   );
-}
+};
 export default Dialogs;

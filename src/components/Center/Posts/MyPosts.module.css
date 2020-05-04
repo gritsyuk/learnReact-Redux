@@ -1,26 +1,22 @@
 .myPosts {
-    display: grid;
-    background-color: hotpink;
-    padding: 1em;
+  display: grid;
+  background-color: hotpink;
+  padding: 1em;
 }
 
-.sendposts-wrap {
-    display: grid;
-    width: 200px;
+.postsWrap {
+  display: grid;
+  width: 200px;
 }
-.sendposts-wrap textarea {
-    width: 40em;
-    min-height: 10em;
-    resize: none;
+.postsWrap textarea {
+  width: 40em;
+  min-height: 10em;
+  resize: none;
+}
 
-}
-
-.sendposts-wrap button{
-    background-color: royalblue;
-    width: 100%;
-    min-height: 3em;
-    margin: .5em;
-}
-.post-item {
-    
+.postsWrap button {
+  background-color: royalblue;
+  width: 100%;
+  min-height: 3em;
+  margin: 0.5em;
 }

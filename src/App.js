@@ -18,22 +18,19 @@ function App(props) {
             path='/start'
             render={() => (
               <Profile
-                textareaValue={props.textareaValue}
-                posts={props.posts}
-                addPost={props.addPost}
+                posts={props.state.posts}
+                dispatch={props.dispatch}
               />
             )}
           />
-          <Route
-            path='/dialogs'
-            render={() => (
-              <Dialogs arrData={props.arrData} arrMsg={props.arrMsg} />
+          <Route path='/dialogs' render={() => (<Dialogs dialogs = {props.state.dialogs}  /> 
             )}
           />
         </section>{" "}
-      </div>{" "}
+      </div>
     </BrowserRouter>
   );
 }
+// arrData={props.arrData} arrMsg={props.arrMsg}
 
 export default App;
