@@ -1,0 +1,14 @@
+.post {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    background-color: rebeccapurple;
+
+}
+.post img {
+    width: 80px;
+    height: 50px;
+}
+.item {
+    margin: 0.5em;
+    background-color: yellowgreen;
+}
