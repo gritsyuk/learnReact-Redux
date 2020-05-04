@@ -1,4 +1,7 @@
 import { refreshTree } from "../../index";
+const SET_VALUE_TEXTAREA = "SET-VALUE-TEXTAREA";
+const ADD_POST = "ADD-POST";
+
 let store = {
   _state: {
     posts: {
@@ -29,7 +32,7 @@ let store = {
   },
   dispatch(action) {
     switch (action.type) {
-      case "ADD-POST":
+      case ADD_POST:
         let newPost = {
           id: 3,
           message: action.msg,
@@ -39,7 +42,7 @@ let store = {
         this._state.posts.textareaValue = '';
         refreshTree();
         break;
-      case "SET-VALUE-TEXTAREA":
+      case SET_VALUE_TEXTAREA:
         this._state.posts.textareaValue = action.text;
         refreshTree();
         break;
@@ -48,4 +51,8 @@ let store = {
     }
   },
 };
+
+export const setValueTextareaActionCreator = (text) => ({ type: SET_VALUE_TEXTAREA, text: text });
+export const aadPostActionCreator = (text) => ({ type: ADD_POST, msg: text });
+
 export default store;

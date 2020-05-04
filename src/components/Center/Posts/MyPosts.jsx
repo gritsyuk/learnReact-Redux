@@ -1,6 +1,7 @@
 import React from "react";
 import css from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import {setValueTextareaActionCreator, aadPostActionCreator} from '../../redux/db';
 
 const MyPosts = (props) => {
   let post = props.posts.postData.map((el) => (
@@ -10,12 +11,12 @@ const MyPosts = (props) => {
 
   let updateTextarea = () => {
     let text = newPostElement.current.value;
-    props.dispatch({ type: "SET-VALUE-TEXTAREA", text: text });
+    props.dispatch(setValueTextareaActionCreator(text));
   };
 
   let addPost = () => {
     let text = newPostElement.current.value;
-    props.dispatch({ type: "ADD-POST", msg: text });
+    props.dispatch(aadPostActionCreator(text));
   };
   return (
     <section className={css.myPosts}>
