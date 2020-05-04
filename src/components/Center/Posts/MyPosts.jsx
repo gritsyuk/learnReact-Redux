@@ -1,24 +1,25 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import { setValueTextarea } from '../../redux/db';
+import store from '../../redux/db';
 
 const MyPosts = (props) => {
 
   let post = props.posts.map(el => <Post title="Заголовок" message={el.message} />);
   let newPostElement = React.createRef();
 
+
+
+  let updateTextarea = () => {
+    let text = newPostElement.current.value;
+    store.setValueTextarea(text);
+  }
+
   let addPost = () => {
     let text = newPostElement.current.value;
     props.addPost(text);
-
+    updateTextarea();
   }
-  let updateTextarea = () => {
-    let text = newPostElement.current.value;
-    setValueTextarea(text);
-  }
-
-
   return (
     <section className={s.myPosts}>
       <div className={s['sendposts-wrap']} >
