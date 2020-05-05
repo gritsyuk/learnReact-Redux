@@ -25,11 +25,19 @@ const Dialogs = (props) => {
 
   return (
     <section className={s.dialogs}>
-      <div className={s.dialogsItems}>
+      <div className={s.dialogsCol1}>
         {arrDialogsData}
         {/* <DialogItems name={dialogsData[0].name} id={dialogsData[0].id} /> */}
       </div>
-      <div className={s.messages}>{arrMsgData}</div>
+      <div className={s.dialogsCol2}>
+        <div className={s.msgWrapper}>{arrMsgData}</div>
+        <div className={s.sendMsgWrap}>
+          <textarea />
+            <button className={s.sendButtonMsg}>Отправить</button>
+        </div>
+        
+      </div>
+      <div className={s.dialogsCol3}></div>
     </section>
   );
 };
