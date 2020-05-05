@@ -1,5 +1,5 @@
 import React, { Profiler } from "react";
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
 import Header from "./components/Header";
 import Nav from "./components/Navbar/Nav";
@@ -14,23 +14,14 @@ function App(props) {
         <Nav />
         <section className='page-content'>
           <Header />
-          <Route
-            path='/start'
-            render={() => (
-              <Profile
-                posts={props.state.posts}
-                dispatch={props.dispatch}
-              />
-            )}
-          />
+          <Route path='/start' render={() => (<Profile posts={props.state.posts} dispatch={props.dispatch}/>)}/>
           <Route path='/dialogs' render={() => (<Dialogs dialogs = {props.state.dialogs} dispatch = {props.dispatch} /> 
             )}
           />
-        </section>{" "}
+        </section>
       </div>
     </BrowserRouter>
   );
 }
-// arrData={props.arrData} arrMsg={props.arrMsg}
 
 export default App;

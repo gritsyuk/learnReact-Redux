@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import {setValueTextareaActionCreator, aadPostActionCreator} from '../../redux/db';
+import {setValueTextareaActionCreator, aadPostActionCreator} from '../../redux/posts-reducer';
 
 const MyPosts = (props) => {
   let post = props.posts.postData.map((el) => (

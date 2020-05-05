@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Dialogs.module.css";
 import { NavLink } from "react-router-dom";
 import Message from "./Message";
-import {setValueTextareaActionCreatorMsg, aadMsgActionCreator} from '../../redux/db';
+import {setValueTextareaActionCreatorMsg, aadMsgActionCreator} from '../../redux/dialogs-reducer';
 
 const DialogItems = (props) => {
   let path = "/dialogs/" + props.id;
@@ -18,15 +18,14 @@ const Dialogs = (props) => {
     <DialogItems name={el.name} id={el.id} />
   ));
 
-  const BoxMsgTextarea = React.createRef();
 
-  let updateTextarea = () => {
-    let qq = BoxMsgTextarea.current.value;
-    props.dispatch(setValueTextareaActionCreatorMsg(qq));
+  let newMessageBody = props.dialogs.textMsgCart;
+  let updateTextarea = (e) => {
+    let body = e.target.value;
+    props.dispatch(setValueTextareaActionCreatorMsg(body));
   };
  let pushMsg = () => {
-  let text = props.dialogs.textMsgCart;
-  props.dispatch(aadMsgActionCreator(text));
+  props.dispatch(aadMsgActionCreator(newMessageBody));
 
  }
   
@@ -38,7 +37,7 @@ const Dialogs = (props) => {
           {<Message dialogs={props.dialogs} />}
         </div>
         <div className={s.sendMsgWrap}>
-          <textarea ref={BoxMsgTextarea} onChange={updateTextarea} value={props.dialogs.textMsgCart} />
+          <textarea onChange={updateTextarea} value={newMessageBody} />
           <button className={s.sendButtonMsg} onClick={pushMsg} >Send</button>
         </div>
       </div>
