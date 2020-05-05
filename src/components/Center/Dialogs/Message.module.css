@@ -1,0 +1,10 @@
+.msgBox {
+    margin: .3em;
+    background-color: lightblue;
+}
+
+.msgBox p {
+    color: darkblue;
+    padding: 0 1em;
+    text-align: right;
+}

@@ -23,7 +23,7 @@ function App(props) {
               />
             )}
           />
-          <Route path='/dialogs' render={() => (<Dialogs dialogs = {props.state.dialogs}  /> 
+          <Route path='/dialogs' render={() => (<Dialogs dialogs = {props.state.dialogs} dispatch = {props.dispatch} /> 
             )}
           />
         </section>{" "}

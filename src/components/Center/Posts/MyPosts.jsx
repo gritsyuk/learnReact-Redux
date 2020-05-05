@@ -15,14 +15,13 @@ const MyPosts = (props) => {
   };
 
   let addPost = () => {
-    let text = newPostElement.current.value;
+    let text = props.posts.textareaValue;
     props.dispatch(aadPostActionCreator(text));
   };
   return (
     <section className={css.myPosts}>
       <div className={css.postsWrap}>
         <textarea
-          name='postText'
           ref={newPostElement}
           onChange={updateTextarea}
           value={props.posts.textareaValue}

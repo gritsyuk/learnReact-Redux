@@ -1,6 +1,8 @@
 import { refreshTree } from "../../index";
-const SET_VALUE_TEXTAREA = "SET-VALUE-TEXTAREA";
+const SET_VALUE_TEXTAREA_POST = "SET-VALUE-TEXTAREA";
 const ADD_POST = "ADD-POST";
+const SET_VALUE_TEXTAREA_CHAT = "SET-VALUE-TEXTAREA-CHAT";
+const SEND_MESSAGE = "SEND-MESSAGE";
 
 let store = {
   _state: {
@@ -19,12 +21,19 @@ let store = {
         { id: "4", name: "Саша" },
         { id: "5", name: "Иван" },
         { id: "6", name: "Алиса" },
+        { id: "6", name: "Алиса" },
+        { id: "6", name: "Алиса" },
+        { id: "6", name: "Алиса" },
       ],
       msgData: [
         { id: "1", message: "HI" },
         { id: "2", message: "HOw are you man" },
         { id: "3", message: "Hellow" },
+        { id: "3", message: "Hellow" },
+        { id: "3", message: "Hellow" },
+        { id: "3", message: "Hellow" },
       ],
+      textMsgCart: "",
     },
   },
   getState () {
@@ -42,17 +51,32 @@ let store = {
         this._state.posts.textareaValue = '';
         refreshTree();
         break;
-      case SET_VALUE_TEXTAREA:
+        case SEND_MESSAGE:
+          let newMsg = {
+            id: 3,
+            message: action.msg,
+          };
+          this._state.dialogs.msgData.push(newMsg);
+          this._state.dialogs.textMsgCart = '';
+          refreshTree();
+          break;  
+      case SET_VALUE_TEXTAREA_POST:
         this._state.posts.textareaValue = action.text;
         refreshTree();
         break;
+      case SET_VALUE_TEXTAREA_CHAT:
+          this._state.dialogs.textMsgCart = action.text;
+          refreshTree();
+          break;  
       default:
         break;
     }
   },
 };
 
-export const setValueTextareaActionCreator = (text) => ({ type: SET_VALUE_TEXTAREA, text: text });
+export const setValueTextareaActionCreator = (text) => ({ type: SET_VALUE_TEXTAREA_POST, text: text });
+export const setValueTextareaActionCreatorMsg = (text) => ({ type: SET_VALUE_TEXTAREA_CHAT, text: text });
 export const aadPostActionCreator = (text) => ({ type: ADD_POST, msg: text });
+export const aadMsgActionCreator = (text) => ({ type: SEND_MESSAGE, msg: text });
 
 export default store;

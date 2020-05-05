@@ -1,6 +1,8 @@
 import React from "react";
 import s from "./Dialogs.module.css";
 import { NavLink } from "react-router-dom";
+import Message from "./Message";
+import {setValueTextareaActionCreatorMsg, aadMsgActionCreator} from '../../redux/db';
 
 const DialogItems = (props) => {
   let path = "/dialogs/" + props.id;
@@ -11,31 +13,34 @@ const DialogItems = (props) => {
   );
 };
 
-const Message = (props) => {
-  return <div className={s.message}>{props.message}</div>;
-};
-
 const Dialogs = (props) => {
   let arrDialogsData = props.dialogs.dialogsData.map((el) => (
     <DialogItems name={el.name} id={el.id} />
   ));
-  let arrMsgData = props.dialogs.msgData.map((msg) => (
-    <Message message={msg.message} />
-  ));
 
+  const BoxMsgTextarea = React.createRef();
+
+  let updateTextarea = () => {
+    let qq = BoxMsgTextarea.current.value;
+    props.dispatch(setValueTextareaActionCreatorMsg(qq));
+  };
+ let pushMsg = () => {
+  let text = props.dialogs.textMsgCart;
+  props.dispatch(aadMsgActionCreator(text));
+
+ }
+  
   return (
     <section className={s.dialogs}>
-      <div className={s.dialogsCol1}>
-        {arrDialogsData}
-        {/* <DialogItems name={dialogsData[0].name} id={dialogsData[0].id} /> */}
-      </div>
+      <div className={s.dialogsCol1}>{arrDialogsData}</div>
       <div className={s.dialogsCol2}>
-        <div className={s.msgWrapper}>{arrMsgData}</div>
-        <div className={s.sendMsgWrap}>
-          <textarea />
-            <button className={s.sendButtonMsg}>Отправить</button>
+        <div className={s.msgWrapper}>
+          {<Message dialogs={props.dialogs} />}
         </div>
-        
+        <div className={s.sendMsgWrap}>
+          <textarea ref={BoxMsgTextarea} onChange={updateTextarea} value={props.dialogs.textMsgCart} />
+          <button className={s.sendButtonMsg} onClick={pushMsg} >Send</button>
+        </div>
       </div>
       <div className={s.dialogsCol3}></div>
     </section>
