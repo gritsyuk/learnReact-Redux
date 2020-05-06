@@ -1,5 +1,5 @@
 import postReducer from "./posts-reducer";
-import dialogsReducer from "./dialogs-reducer";
+import dialogsReducer from "./dialogs-reducer"; 
 
 let store = {
   _state: {

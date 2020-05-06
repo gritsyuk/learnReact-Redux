@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import store from "./components/redux/store";
+import store from "./components/redux/store-redux";
 
-let refreshTree =  (state) => {
+let refreshTree =  (state) => {debugger;
   ReactDOM.render(
     <React.StrictMode>
       <App
@@ -20,6 +20,6 @@ let refreshTree =  (state) => {
   // unregister() to register() below. Note this comes with some pitfalls.
   // Learn more about service workers: https://bit.ly/CRA-PWA
   serviceWorker.unregister();
-
-  refreshTree(store.getState());
-  store.subscribe(refreshTree);
+  let st = store.getState();
+  refreshTree(st);
+  store.subscribe(()=>{refreshTree(st);});
