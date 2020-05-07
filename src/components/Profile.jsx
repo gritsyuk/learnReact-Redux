@@ -1,9 +1,9 @@
 import React from "react";
-import MyPosts from "./Center/Posts/MyPosts";
+import MyPostsContainer from "./Center/Posts/MyPostsContainer";
 const Profile = (props) => {
   return (
     <section>
-      <MyPosts posts={props.posts} dispatch={props.dispatch} />
+      <MyPostsContainer posts={props.posts} dispatch={props.dispatch} />
     </section>
     // <section className="grid">
     //   <article></article>

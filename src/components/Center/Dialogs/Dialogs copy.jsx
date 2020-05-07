@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Dialogs.module.css";
 import { NavLink } from "react-router-dom";
 import Message from "./Message";
+import {setValueTextareaActionCreatorMsg, aadMsgActionCreator} from '../../redux/dialogs-reducer';
 
 const DialogItems = (props) => {
   let path = "/dialogs/" + props.id;
@@ -12,17 +13,19 @@ const DialogItems = (props) => {
   );
 };
 
-const Dialogs = (props) => { 
+const Dialogs = (props) => {
   let arrDialogsData = props.dialogs.dialogsData.map((el) => (
     <DialogItems name={el.name} id={el.id} />
   ));
+
+
   let newMessageBody = props.dialogs.textMsgCart;
   let updateTextarea = (e) => {
     let body = e.target.value;
-    props.setValueTextareaActionCreatorMsg(body);
+    props.dispatch(setValueTextareaActionCreatorMsg(body));
   };
  let pushMsg = () => {
-  props.aadMsgActionCreator(newMessageBody);
+  props.dispatch(aadMsgActionCreator(newMessageBody));
 
  }
   

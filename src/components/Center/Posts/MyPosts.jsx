@@ -1,32 +1,29 @@
 import React from "react";
 import css from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import {setValueTextareaActionCreator, aadPostActionCreator} from '../../redux/posts-reducer';
 
 const MyPosts = (props) => {
   let post = props.posts.postData.map((el) => (
     <Post title='Заголовок' message={el.message} />
   ));
-  let newPostElement = React.createRef();
 
-  let updateTextarea = () => {
-    let text = newPostElement.current.value;
-    props.dispatch(setValueTextareaActionCreator(text));
+  let updateSymbol = (e) => {
+    let symbol = e.target.value;
+    props.setValueTextareaActionCreator(symbol);
   };
 
-  let addPost = () => {
-    let text = props.posts.textareaValue;
-    props.dispatch(aadPostActionCreator(text));
+  let newPost = () => {
+    let text = props.posts.textareaValue; 
+    props.aadPostActionCreator(text);
   };
   return (
     <section className={css.myPosts}>
       <div className={css.postsWrap}>
         <textarea
-          ref={newPostElement}
-          onChange={updateTextarea}
-          value={props.posts.textareaValue}
+          onChange={updateSymbol}
+          value={ props.posts.textareaValue}
         />
-        <button id='send' onClick={addPost}>
+        <button id='send' onClick={newPost}>
           Опубликовать
         </button>
       </div>
