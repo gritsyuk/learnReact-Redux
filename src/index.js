@@ -4,14 +4,12 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import store from "./components/redux/store-redux";
+import {Provider} from 'react-redux';
 
 let refreshTree =  (state) => {debugger;
   ReactDOM.render(
     <React.StrictMode>
-      <App
-        state={state}
-        dispatch={store.dispatch.bind(store)}
-      />
+      <Provider store = {store}><App /></Provider>
     </React.StrictMode>,
     document.getElementById("root")
   );

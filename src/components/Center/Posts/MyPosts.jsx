@@ -9,6 +9,7 @@ const MyPosts = (props) => {
 
   let updateSymbol = (e) => {
     let symbol = e.target.value;
+    debugger;
     props.setValueTextareaActionCreator(symbol);
   };
 
@@ -21,7 +22,7 @@ const MyPosts = (props) => {
       <div className={css.postsWrap}>
         <textarea
           onChange={updateSymbol}
-          value={ props.posts.textareaValue}
+          value={props.posts.textareaValue}
         />
         <button id='send' onClick={newPost}>
           Опубликовать

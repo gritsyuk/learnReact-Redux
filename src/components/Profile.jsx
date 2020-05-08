@@ -3,7 +3,7 @@ import MyPostsContainer from "./Center/Posts/MyPostsContainer";
 const Profile = (props) => {
   return (
     <section>
-      <MyPostsContainer posts={props.posts} dispatch={props.dispatch} />
+      <MyPostsContainer />
     </section>
     // <section className="grid">
     //   <article></article>
