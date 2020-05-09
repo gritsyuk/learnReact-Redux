@@ -1,6 +1,4 @@
-import React from "react";
-import s from "./Dialogs.module.css";
-import { NavLink } from "react-router-dom";
+// import React from "react";
 import Dialogs from "./Dialogs";
 import {
   setValueTextareaActionCreatorMsg,
@@ -27,7 +25,7 @@ import {connect} from 'react-redux';
 // };
 let mapStateToProps = (state)=>{return {dialogs: state.dialogs}}
 let mapDispatchToProps = (dispatch)=>{
-  return {
+  return { 
     setValueTextareaActionCreatorMsg: (body)=>{dispatch(setValueTextareaActionCreatorMsg(body))},
     aadMsgActionCreator : (newMessageBody)=>{dispatch(aadMsgActionCreator(newMessageBody))}
 }}

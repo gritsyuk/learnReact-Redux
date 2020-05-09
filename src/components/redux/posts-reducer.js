@@ -11,22 +11,26 @@ let initialState = {
 
 const postReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_POST:
+    case ADD_POST: 
       let newPost = {
         id: 3,
         message: action.msg,
         likeCount: 0,
       };
-      state.postData.push(newPost);
-      state.textareaValue = "";
-      return state;
+      return {
+        ...state,
+        postData : [...state.postData, newPost],
+        textareaValue: '',
+      };
     case SET_VALUE_TEXTAREA_POST:
-      state.textareaValue = action.text;
-      return state;
+      return {
+        ...state,
+        textareaValue: action.text,
+      }; 
     default:
       return state;
   }
-};
+}; 
 export default postReducer;
 
 export const setValueTextareaActionCreator = (text) => ({

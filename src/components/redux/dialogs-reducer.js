@@ -2,7 +2,7 @@ const SET_VALUE_TEXTAREA_CHAT = "SET-VALUE-TEXTAREA-CHAT";
 const SEND_MESSAGE = "SEND-MESSAGE";
 
 let initialState = {
-    dialogsData: [
+    dialogsData: [ 
       { id: "1", name: "Коля" },
       { id: "2", name: "Петя" },
       { id: "3", name: "Вася" },
@@ -28,27 +28,31 @@ const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SEND_MESSAGE:
       let newMsg = {
-        id: 3,
+        id: 4,
         message: action.msg,
       };
-      state.msgData.push(newMsg);
-      state.textMsgCart = "";
-      return state;
+      return {
+        ...state,
+        msgData: [...state.msgData, newMsg],
+        textMsgCart : "",
+      };
     case SET_VALUE_TEXTAREA_CHAT:
-      state.textMsgCart = action.text;
-      return state;
+      return {
+        ...state,
+        textMsgCart : action.text,
+      };
     default:
       return state;
-  }
-};
-
+  } 
+};debugger;
 export default dialogsReducer;
-
 export const setValueTextareaActionCreatorMsg = (text) => ({
-  type: SET_VALUE_TEXTAREA_CHAT,
+  type: SET_VALUE_TEXTAREA_CHAT, 
   text: text,
 });
 export const aadMsgActionCreator = (text) => ({
   type: SEND_MESSAGE,
   msg: text,
 });
+
+
