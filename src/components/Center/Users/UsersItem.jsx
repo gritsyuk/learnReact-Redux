@@ -1,6 +1,7 @@
 import React from "react";
 import css from "./UsersItem.module.css";
 const NONE_LOGO= "https://www.pngitem.com/pimgs/m/80-800194_transparent-users-icon-png-flat-user-icon-png.png";
+
 export default class UsersItem extends React.Component {
   actionCreater = (e) => {
     let idUser = this.props.id;
