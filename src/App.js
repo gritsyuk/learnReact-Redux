@@ -6,6 +6,7 @@ import Nav from "./components/Navbar/Nav";
 import Profile from "./components/Profile";
 import { BrowserRouter, Route } from "react-router-dom";
 import DialogsContainer from "./components/Center/Dialogs/DialogsContainer";
+import UsersContainer from './components/Center/Users/UsersContainer';
 
 
 function App(props) {
@@ -15,10 +16,9 @@ function App(props) {
         <Nav />
         <section className='page-content'>
           <Header />
-          <Route path='/start' render={() => (<Profile />)}/>
-          <Route path='/dialogs' render={() => (<DialogsContainer /> 
-            )}
-          />
+          <Route path='/start' render={() => (<Profile /> )} />
+          <Route path='/dialogs' render={() => (<DialogsContainer />  )}  />
+          <Route path='/users' render={() => (<UsersContainer />  )} />
         </section>
       </div>
     </BrowserRouter>

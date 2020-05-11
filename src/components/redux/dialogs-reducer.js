@@ -44,7 +44,7 @@ const dialogsReducer = (state = initialState, action) => {
     default:
       return state;
   } 
-};debugger;
+};
 export default dialogsReducer;
 export const setValueTextareaActionCreatorMsg = (text) => ({
   type: SET_VALUE_TEXTAREA_CHAT, 

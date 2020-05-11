@@ -20,9 +20,7 @@ const Nav = () => {
             <NavLink to="/dialogs"><span>Dialogs</span></NavLink>
             </li>
             <li>
-                <a href="#0">
-                    <span>Trends</span>
-                </a>
+            <NavLink to="/users"><span>Users</span></NavLink>
             </li>
             <li>
                 <a href="#0">

@@ -1,0 +1,28 @@
+.usersPage {
+  display: flex;
+  width: 40em;
+  background-color: lightblue;
+  padding: 1em;
+  margin: 0.5em 0;
+}
+.firsCol {
+  width: 5em;
+}
+.firsCol img {
+  width: 5em;
+  height: 6em;
+}
+.firsCol button {
+  width: 100%;
+  color: darkolivegreen;
+  font-weight: bold;
+  padding: 0.5em;
+  background-color: lightsalmon;
+}
+
+.secondCol {
+  padding: 0 1em;
+  width: 30em;
+  /* background-color: lightgreen; */
+}
+
