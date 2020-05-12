@@ -26,3 +26,11 @@
   /* background-color: lightgreen; */
 }
 
+.pagination span {
+  padding: 0 .5em;
+}
+
+.pagination .active {
+  font-weight: bold;
+  color: coral;
+}
