@@ -1,23 +1,32 @@
 import React from "react";
-import {followAction, unfollowAction, setUsers, setCurrentPage, setTotalCountUsers} from '../../redux/users-reducer';
 import { connect } from 'react-redux';
+import {followAction, unfollowAction, setUsers, setCurrentPage, setTotalCountUsers, isTogglePreload} from '../../redux/users-reducer';
 import UsersItem from "./UsersItem";
+import Preload from '../../Preloader/Preload';
 import * as Axios from "axios";
 
 
 class UsersContainer extends React.Component {
   componentDidMount() {    
     if (this.props.usersList == '') {
+    this.props.isTogglePreload(true);  
     Axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.countOnPage}&page=${this.props.currentPage}`)
-    .then(response => {this.props.setUsers(response.data.items);
-                       this.props.setTotalCountUsers(response.data.totalCount);
-    });   
+    .then(response => {
+      this.props.isTogglePreload(false); 
+      this.props.setUsers(response.data.items);
+      this.props.setTotalCountUsers(response.data.totalCount);
+    });  
+    
   }}
   setPage = (page)=> {
     this.props.setCurrentPage(page);
+    this.props.isTogglePreload(true);
     Axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.countOnPage}&page=${page}`)
-    .then(response => {this.props.setUsers(response.data.items);
-    });  
+    .then(response => {
+      this.props.isTogglePreload(false);  
+      this.props.setUsers(response.data.items);
+    }); 
+    
   }
  
   render() {
@@ -27,9 +36,12 @@ class UsersContainer extends React.Component {
       page.push(i);
     }
     return (
+      <>
+      {(this.props.togglePreload) &&  <Preload/>}
       <UsersItem usersList = {this.props.usersList} followAction={this.props.followAction}
        unfollowAction={this.props.unfollowAction} currentPage={this.props.currentPage}
        setPage={this.setPage} page={page} />
+      </>
       )
   };
 };
@@ -42,6 +54,7 @@ let mapStateToProps = (state) => {
         currentPage: state.users.currentPage,
         countOnPage: state.users.countOnPage,
         totalCountUsers: state.users.totalCountUsers,
+        togglePreload: state.users.togglePreload,
       }
 }
 let mapDispatchToProps = (dispatch) => {
@@ -51,6 +64,7 @@ return {
   setUsers: (users) => { dispatch (setUsers(users) ) },
   setCurrentPage: (n) => { dispatch (setCurrentPage(n) ) },
   setTotalCountUsers: (n) => { dispatch (setTotalCountUsers(n) ) },
+  isTogglePreload: (n) => { dispatch (isTogglePreload(n) ) },
 }
 
 }
