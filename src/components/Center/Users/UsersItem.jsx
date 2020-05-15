@@ -3,43 +3,50 @@ import css from "./UsersItem.module.css";
 const NONE_LOGO= "https://www.pngitem.com/pimgs/m/80-800194_transparent-users-icon-png-flat-user-icon-png.png";
 
 export default class UsersItem extends React.Component {
-  actionCreater = (e) => {
-    let idUser = this.props.id;
+  actionCreater(e, idUser) {
     (e.target.textContent === "unfollow")
       ? this.props.unfollowAction(idUser)
       : this.props.followAction(idUser);
   };
   render() {
     return (
-      <section className={css.usersPage} key={this.props.key}>
+      <div>
+      <div className={css.pagination}>
+      {this.props.page.map( (n) => <span onClick = {()=>this.props.setPage(n)} className = {(n === this.props.currentPage) && css.active}>{n}</span>)}
+     </div>
+     <div>
+      {this.props.usersList.map( (el) => {
+        return (
+      <section className={css.usersPage} key={el.id}>
         <div className={css.firsCol}>
           <div>
-            <img src={(!this.props.img.small) ? NONE_LOGO : this.props.img.small} />
+            <img src={(!el.photos.small) ? NONE_LOGO : el.photos.small} />
           </div>
           <div>
-            <button onClick={this.actionCreater}>
-              {this.props.followed === true ? "unfollow" : "follow"}
+            <button onClick={(e)=>{this.actionCreater(e, el.id)}}>
+              {el.followed === true ? "unfollow" : "follow"}
             </button>
           </div>
         </div>
         <div className={css.secondCol}>
           <div>
-            <b>{this.props.name}</b>
+            <b>{el.name}</b>
           </div>
           <div>
-            <small>{this.props.status}</small>
+            <small>{el.status}</small>
           </div>
         </div>
         <div className={css.thirdCol}>
           <div>
-            <span>{'this.props.location.country'}</span>
+            <span>{'el.location.country'}</span>
           </div>
           <div>
-            <span>{'this.props.location.city'}</span>
+            <span>{'el.location.city'}</span>
           </div>
         </div>
-      </section>
-    );
-  }
+      </section>)}
+      )
+    }</div>
+</div>
+)}
 }
-
