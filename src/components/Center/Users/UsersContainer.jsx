@@ -57,17 +57,18 @@ let mapStateToProps = (state) => {
         togglePreload: state.users.togglePreload,
       }
 }
-let mapDispatchToProps = (dispatch) => {
-return {
-  followAction : (id)=> { dispatch( followAction(id) ) },
-  unfollowAction : (id)=> { dispatch( unfollowAction(id) ) },
-  setUsers: (users) => { dispatch (setUsers(users) ) },
-  setCurrentPage: (n) => { dispatch (setCurrentPage(n) ) },
-  setTotalCountUsers: (n) => { dispatch (setTotalCountUsers(n) ) },
-  isTogglePreload: (n) => { dispatch (isTogglePreload(n) ) },
-}
 
-}
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer); 
+export default connect(mapStateToProps,  
+  {followAction, unfollowAction, setUsers, setCurrentPage, setTotalCountUsers, isTogglePreload })(UsersContainer); 
 
 
+// let mapDispatchToProps = (dispatch) => {
+// return {
+//   followAction : (id)=> { dispatch( followAction(id) ) },
+//   unfollowAction : (id)=> { dispatch( unfollowAction(id) ) },
+//   setUsers: (users) => { dispatch (setUsers(users) ) },
+//   setCurrentPage: (n) => { dispatch (setCurrentPage(n) ) },
+//   setTotalCountUsers: (n) => { dispatch (setTotalCountUsers(n) ) },
+//   isTogglePreload: (n) => { dispatch (isTogglePreload(n) ) },
+// }
+//}
